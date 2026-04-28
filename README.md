@@ -6,7 +6,7 @@ Projeto em Java para Desenvolvimento de Sistemas.
 - Cálculo do volume de concreto para vigas
 - Cálculo da quantidade de tijolos
 - API REST organizada em camadas
-- Interface rm hrml
+- Interface em html
 
 ## Tecnologias
 - Java 17
