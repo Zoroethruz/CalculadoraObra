@@ -59,12 +59,6 @@
   .result-table td:last-child { font-weight: 600; color: #1a1a1a; }
   .error-box { margin-top: 1rem; padding: 12px 16px; background: #fff5f5; border: 1px solid #fed7d7; border-radius: 8px; color: #c53030; font-size: 13px; line-height: 1.6; }
   .loading { margin-top: 1rem; color: #888; font-size: 13px; }
-  .info-box { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 8px; padding: 12px 16px; margin-bottom: 1rem; font-size: 13px; color: #744210; line-height: 1.7; }
-  .info-box b { color: #5a3000; }
-  .status { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 1rem; }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: #ccc; }
-  .dot.ok { background: #48bb78; }
-  .dot.err { background: #fc8181; }
 </style>
 </head>
 <body>
@@ -72,13 +66,7 @@
   <h1>CalcObra</h1>
   <p class="subtitle">Calculadora de materiais para obra residencial.</p>
 
-  <div class="info-box">
-    <b>Antes de usar:</b> certifique-se que o projeto está rodando no IntelliJ (<b>localhost:8080</b>).
-  </div>
 
-  <div class="status">
-    <div class="dot" id="status-dot"></div>
-    <span id="status-text">Verificando servidor...</span>
   </div>
 
   <div class="tabs">
@@ -86,7 +74,6 @@
     <button class="tab" onclick="switchTab('tijolos', this)">Tijolos</button>
   </div>
 
-  <!-- CONCRETO -->
   <div id="panel-concreto" class="panel active">
     <div class="card">
       <div class="section-title">Dados da viga baldrame</div>
@@ -108,7 +95,6 @@
     <div id="c-result"></div>
   </div>
 
-  <!-- TIJOLOS -->
   <div id="panel-tijolos" class="panel">
     <div class="card">
       <div class="section-title">Dimensões do tijolo</div>
@@ -135,18 +121,6 @@
 <script>
 let cCount = 0, tCount = 0;
 
-async function checkServer() {
-  try {
-    await fetch('http://localhost:8080/h2-console', { mode: 'no-cors' });
-    document.getElementById('status-dot').className = 'dot ok';
-    document.getElementById('status-text').textContent = 'Servidor rodando em localhost:8080';
-  } catch(e) {
-    document.getElementById('status-dot').className = 'dot err';
-    document.getElementById('status-text').textContent = 'Servidor offline — inicie o projeto no IntelliJ';
-  }
-}
-checkServer();
-setInterval(checkServer, 5000);
 
 function switchTab(tab, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
