@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-// Essa classe é utilizada para modelar a estrutura de especificação do tijolo a ser utilizado
-
 public class TijoloRequest {
 
     @Valid
@@ -27,35 +25,20 @@ public class TijoloRequest {
     @DecimalMin(value = "0.0", message = "O percentual de perda não pode ser negativo.")
     private Double percentualPerda;
 
-    public List<ArestaRequest> getArestas() {
-        return arestas;
-    }
+    private String nomeUsuario;
 
-    public void setArestas(List<ArestaRequest> arestas) {
-        this.arestas = arestas;
-    }
+    public List<ArestaRequest> getArestas() { return arestas; }
+    public void setArestas(List<ArestaRequest> arestas) { this.arestas = arestas; }
 
-    public Double getAlturaTijolo() {
-        return alturaTijolo;
-    }
+    public Double getAlturaTijolo() { return alturaTijolo; }
+    public void setAlturaTijolo(Double alturaTijolo) { this.alturaTijolo = alturaTijolo; }
 
-    public void setAlturaTijolo(Double alturaTijolo) {
-        this.alturaTijolo = alturaTijolo;
-    }
+    public Double getLarguraTijolo() { return larguraTijolo; }
+    public void setLarguraTijolo(Double larguraTijolo) { this.larguraTijolo = larguraTijolo; }
 
-    public Double getLarguraTijolo() {
-        return larguraTijolo;
-    }
+    public Double getPercentualPerda() { return percentualPerda; }
+    public void setPercentualPerda(Double percentualPerda) { this.percentualPerda = percentualPerda; }
 
-    public void setLarguraTijolo(Double larguraTijolo) {
-        this.larguraTijolo = larguraTijolo;
-    }
-
-    public Double getPercentualPerda() {
-        return percentualPerda;
-    }
-
-    public void setPercentualPerda(Double percentualPerda) {
-        this.percentualPerda = percentualPerda;
-    }
+    public String getNomeUsuario() { return nomeUsuario; }
+    public void setNomeUsuario(String nomeUsuario) { this.nomeUsuario = nomeUsuario; }
 }

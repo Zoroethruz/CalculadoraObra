@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-// Essa classe é utilizada para modelar e ser utilizada como referência da estrutura esperada para obter os atributos necessários para o objeto Viga Baldrame
-
 public class ConcretoRequest {
 
     @Valid
@@ -19,19 +17,14 @@ public class ConcretoRequest {
     @DecimalMin(value = "0.0001", message = "A altura da viga deve ser maior que zero.")
     private Double alturaViga;
 
-    public List<ArestaRequest> getArestas() {
-        return arestas;
-    }
+    private String nomeUsuario;
 
-    public void setArestas(List<ArestaRequest> arestas) {
-        this.arestas = arestas;
-    }
+    public List<ArestaRequest> getArestas() { return arestas; }
+    public void setArestas(List<ArestaRequest> arestas) { this.arestas = arestas; }
 
-    public Double getAlturaViga() {
-        return alturaViga;
-    }
+    public Double getAlturaViga() { return alturaViga; }
+    public void setAlturaViga(Double alturaViga) { this.alturaViga = alturaViga; }
 
-    public void setAlturaViga(Double alturaViga) {
-        this.alturaViga = alturaViga;
-    }
+    public String getNomeUsuario() { return nomeUsuario; }
+    public void setNomeUsuario(String nomeUsuario) { this.nomeUsuario = nomeUsuario; }
 }

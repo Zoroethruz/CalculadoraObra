@@ -4,15 +4,16 @@ import com.exemplo.obra.dto.ConcretoRequest;
 import com.exemplo.obra.dto.ConcretoResponse;
 import com.exemplo.obra.dto.TijoloRequest;
 import com.exemplo.obra.dto.TijoloResponse;
+import com.exemplo.obra.model.Orcamento;
 import com.exemplo.obra.service.MaterialService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/materiais")
-
-// Essa classe é responsável por gerenciar a interface de acesso aos métodos para calculo de volume de concreto e tijolos
 public class MaterialController {
 
     private final MaterialService materialService;
@@ -29,5 +30,15 @@ public class MaterialController {
     @PostMapping("/tijolos")
     public ResponseEntity<TijoloResponse> calcularTijolos(@Valid @RequestBody TijoloRequest request) {
         return ResponseEntity.ok(materialService.calcularQuantidadeTijolos(request));
+    }
+
+    @GetMapping("/orcamentos")
+    public ResponseEntity<List<Orcamento>> buscarTodos() {
+        return ResponseEntity.ok(materialService.buscarTodos());
+    }
+
+    @GetMapping("/orcamentos/{nome}")
+    public ResponseEntity<List<Orcamento>> buscarPorNome(@PathVariable String nome) {
+        return ResponseEntity.ok(materialService.buscarPorNome(nome));
     }
 }
